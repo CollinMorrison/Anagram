@@ -44,7 +44,7 @@
         You can guess until you get the word correct, and you will be shown the words you have already guessed. 
         Be aware, however, that this may not be easy. Click "Start Game", and enjoy!</p>
       <div class="flex justify-center">
-        <button class="border-2 border-gray-300 rounded-lg pl-2 pr-2 ml-3 max-h-7 mb-5" @click="startGame">Start Game</button>
+        <button class="border-2 border-gray-300 rounded-lg pl-2 pr-2 ml-3 max-h-7 mb-5 mt-5" @click="startGame">Start Game</button>
       </div>
     </div>
   </div>
