@@ -105,11 +105,13 @@ export default {
       console.dir(wordObject)
     },
 
+    // quit the game
     quitGame() {
       this.isPlaying = false
       alert('Thanks for playing!')
     },
 
+    // make sure the guess follows the rules
     validateGuess() {
       let currentGuessArray = this.currentGuess.split('')
       let wordArray = this.word.split('')
