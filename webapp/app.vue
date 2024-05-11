@@ -1,9 +1,3 @@
-<!-- <script setup>
-// state isPlaying controls the game state
-let isPlaying = useState('isPlaying', () => false)
-let guessedCorrectly = useState('guessedCorrectly', () => false)
-</script> -->
-
 <template>
   <div>
     <h1>Word Scramble</h1>
@@ -37,7 +31,7 @@ let guessedCorrectly = useState('guessedCorrectly', () => false)
     <!-- otherwise, render the welcome content -->
     <div v-else>
       <p>Welcome to Word Scramble!</p>
-      <p>This is a game for only the most clever of wordists. Once you have embarked on this mission, 
+      <p class="">This is a game for only the most clever of wordists. Once you have embarked on this mission, 
         you will have to utilize the computer between your ears to unscramble the word. 
         Don't worry - this isn't some sick game that only gives you a certain number of lives. 
         You can guess until you get the word correct, and you will be shown the words you have already guessed. 
