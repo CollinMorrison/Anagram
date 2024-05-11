@@ -1,6 +1,5 @@
 import express from 'express';
 import fetch from 'node-fetch';
-import { config as dotenvConfig } from 'dotenv';
 import cors from 'cors';
 
 // initialize app
