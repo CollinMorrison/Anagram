@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Word Scramble</h1>
+    <h1 class="text-5xl font-bold">Word Scramble</h1>
     <!-- if you're playing the game, render the game -->
     <div v-if="isPlaying">
       <p> Scrambled Word: </p>
@@ -25,6 +25,7 @@
       <div v-if="guessedCorrectly">
         <p>You guessed {{ word }} correctly! Would you like to play again?</p>
         <button @click="startGame">Play Again</button>
+        <button @click="quitGame">Quit</button>
       </div>
     </div>
 
@@ -92,6 +93,11 @@ export default {
 
       // I'm leaving this here for testing purposes
       console.dir(wordObject)
+    },
+
+    quitGame() {
+      this.isPlaying = false
+      alert('Thanks for playing!')
     },
 
     validateGuess() {
