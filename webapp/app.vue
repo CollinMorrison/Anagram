@@ -42,13 +42,13 @@ let guessedCorrectly = useState('guessedCorrectly', () => false)
         Don't worry - this isn't some sick game that only gives you a certain number of lives. 
         You can guess until you get the word correctly, and you will be shown the words you have already guessed. 
         Be aware, however, that this may not be easy. Click "Start Game", and enjoy!</p>
-      <button @click="isPlaying = true">Start Game</button>
+      <button @click="startGame">Start Game</button>
     </div>
   </div>
 </template>
 
 <script>
-// import WordService from '@/WordService.ts'
+import WordService from '@/WordService.ts'
 export default {
   data() {
     return {
@@ -74,6 +74,12 @@ export default {
       console.log("handling change: " + e.target.value)
       this.currentGuess = e.target.value
     },
+    async startGame() {
+      console.log("starting game")
+      // isPlaying.value = true
+      let wordObject = await WordService.getWord()
+      console.dir(wordObject)
+    }
   },
 }
 </script>
