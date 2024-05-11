@@ -20,3 +20,5 @@ This is a simple game that prompts the user to unscramble the Anagram provided. 
 
 ### Notes and what I would've done next
 I started building testing with mocha and chai into the back end, but didn't quite get it working within the time limit. I would finish implementing that. In addition, there's a potential flaw/security risk with this game as it is written, though it is minor. If the user is tech savvy, they can access the unscrambled word since it is stored on the client (not including the console statement I included for testing purposes - you can test all the functionality and cheat by using that). I would implement a database connection that stores each unscrambled word and does the guess validation on the back end to secure the answer. 
+
+I would also finish implementing the functionality to get successful sub-words. I didn't quite get to that before I realized it was a requirement.
