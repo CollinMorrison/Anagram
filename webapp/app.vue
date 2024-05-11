@@ -1,45 +1,55 @@
 <template>
-  <div>
-    <h1 class="text-5xl font-bold">Word Scramble</h1>
+  <div class="bg-gradient-to-b from-slate-600 to-slate-950 h-screen bg-fixed">
+  <div class="flex items-center justify-center h-screen">
+    <div class="bg-slate-600 shadow-xl pr-10 pl-10 rounded-xl flex flex-col justify-center items-center relative w-3/4 h-auto">
+    <h1 class="text-5xl font-bold mb-10 mt-5">Word Scramble</h1>
     <!-- if you're playing the game, render the game -->
     <div v-if="isPlaying">
-      <p> Scrambled Word: </p>
-      <p>{{ scrambledWord }}</p>
-      <div>
+      <p class="font-bold mb-5 text-xl flex justify-center"> Scrambled Word: <span class="text-2xl ml-3 flex justify-center">{{ scrambledWord }}</span></p>
+      <div class="flex justify-center">
         <input
           type="text"
           placeholder="Enter your guess"
           @change="handleInputChange"
           v-model="currentGuess"
+          class="border-2 border-gray-300 rounded-lg w-1/2 mb-5"
         />
-        <button @click="handleGuess()">Guess</button>
+        <button @click="handleGuess()" class="border-2 border-gray-300 rounded-lg pl-2 pr-2 ml-3 max-h-7">Guess</button>
       </div>
       <div>
         <div>
-          <p>Guessed Words:</p>
-          <ul>
-            <li v-for="word in guessedWords">{{ word }}</li>
+          <p class="font-bold text-lg flex justify-center mb-2">Guessed Words:</p>
+          <ul class="font-bold flex justify-center mb-3">
+            <li v-for="word in guessedWords" class="m-2">{{ word }}</li>
           </ul>
         </div>
       </div>
       <div v-if="guessedCorrectly">
-        <p>You guessed {{ word }} correctly! Would you like to play again?</p>
-        <button @click="startGame">Play Again</button>
-        <button @click="quitGame">Quit</button>
+        <div class="flex justify-center mt-5">
+          <p class="font-bold">You guessed {{ word }} correctly! Would you like to play again?</p>
+        </div>
+        <div class="flex justify-center mt-5 mb-5">
+          <button class="border-2 border-gray-300 rounded-lg pl-2 pr-2 ml-3 max-h-7" @click="startGame">Play Again</button>
+          <button class="border-2 border-gray-300 rounded-lg pl-2 pr-2 ml-3 max-h-7" @click="quitGame">Quit</button>
+        </div>
       </div>
     </div>
 
     <!-- otherwise, render the welcome content -->
     <div v-else>
-      <p>Welcome to Word Scramble!</p>
-      <p class="">This is a game for only the most clever of wordists. Once you have embarked on this mission, 
+      <p class="font-bold flex justify-center mb-5">Welcome to Word Scramble!</p>
+      <p class="font-bold flex justify-center">This is a game for only the most clever of wordists. Once you have embarked on this mission, 
         you will have to utilize the computer between your ears to unscramble the word. 
         Don't worry - this isn't some sick game that only gives you a certain number of lives. 
         You can guess until you get the word correct, and you will be shown the words you have already guessed. 
         Be aware, however, that this may not be easy. Click "Start Game", and enjoy!</p>
-      <button @click="startGame">Start Game</button>
+      <div class="flex justify-center">
+        <button class="border-2 border-gray-300 rounded-lg pl-2 pr-2 ml-3 max-h-7 mb-5" @click="startGame">Start Game</button>
+      </div>
     </div>
   </div>
+  </div>
+</div>
 </template>
 
 <script>
@@ -70,7 +80,7 @@ export default {
       }
       else {
         // if the guess is not valid, alert the user
-        alert('Invalid guess. Please try again. Your guess must only include letters in the word, and not exceed the length of the word.')
+        alert('Invalid guess. Please try again. Your guess must only include letters in the word, may not be a repeat guess, and may not exceed the length of the word.')
        }
       this.currentGuess = ''
     },
