@@ -62,7 +62,15 @@ export default {
       if (this.currentGuess === this.word) {
         this.guessedCorrectly = true
       }
-      this.guessedWords.push(this.currentGuess)
+
+      // if the guess is valid, add it to the guessedWords array
+      if (this.validateGuess()) {
+        this.guessedWords.push(this.currentGuess)
+      }
+      else {
+        // if the guess is not valid, alert the user
+        alert('Invalid guess. Please try again. Your guess must only include letters in the word, and not exceed the length of the word.')
+       }
       this.currentGuess = ''
     },
 
@@ -77,12 +85,38 @@ export default {
       this.guessedCorrectly = false
       this.guessedWords = []
       let wordObject = await WordService.getWord()
+      if (!wordObject) alert("Please start the server and reload the page")
       //TODO: implement error handling
       this.scrambledWord = wordObject.scrambledWord
       this.word = wordObject.word
 
       // I'm leaving this here for testing purposes
       console.dir(wordObject)
+    },
+
+    validateGuess() {
+      let currentGuessArray = this.currentGuess.split('')
+      let wordArray = this.word.split('')
+
+      // if the current guess is longer than the word, return false
+      if (currentGuessArray.length > wordArray.length) {
+        return false
+      }
+
+      // if the current guess has already been guessed, return false
+      if (this.guessedWords.includes(this.currentGuess)) {
+        return false
+      }
+
+      // if any of the letters in the current guess are not in the word, return false
+      for (let i = 0; i < currentGuessArray.length; ++i) {
+        if (!wordArray.includes(currentGuessArray[i])) {
+          return false
+        }
+      }
+
+      // guess is valid
+      return true
     }
   },
 }
